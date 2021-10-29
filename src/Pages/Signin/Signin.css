@@ -1,0 +1,50 @@
+.box button img{
+    height: 40px;
+}
+
+.box button div{
+    display: flex;
+    width: 100%;
+    padding: 5px 0px;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    font-weight: 600;
+}
+
+.box button div span{
+    margin: auto;
+    padding:0 10%;
+}
+
+.box h4{
+    font-size: 22px;
+}
+
+.box button{
+    width: 70%;
+    border-radius: 50px;
+    background-color: white;
+    padding: 0px 10px;
+}
+
+.signin{
+    margin: 40px 30%;
+}
+
+.box{
+    padding: 100px 50px 150px;
+    border: 2px solid rgba(128, 128, 128, 0.575);
+    border-radius: 3px;
+}
+
+
+.logo2{
+    width: 60%;
+    margin-bottom: 40px;
+}
+
+.register a{
+    text-decoration: none;
+    color:brown;
+    font-weight: 700;
+}
