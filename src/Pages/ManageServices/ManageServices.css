@@ -1,0 +1,32 @@
+.manage-half{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage form{
+    margin: auto;
+}
+
+.manage-half input{
+    margin: 20px;
+    padding: 10px;
+    width: 550px;
+    background-color: #b7e0d160;
+    border-radius: 5px 5px 0 0;
+    border: 0px;
+    border-bottom: 2px solid rgb(88, 88, 88);
+}
+
+.manage button{
+    margin-top: 60px;
+    width: 140px;
+    background-color: rgb(32, 122, 70);
+    color: white;
+    border-radius: 4px;
+    padding: 7px 15px;
+}
+
+.manage{
+    margin-top: 100px;
+}

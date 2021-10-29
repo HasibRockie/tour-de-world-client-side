@@ -7,6 +7,9 @@ import Signin from './Pages/Signin/Signin';
 import AuthProvider from './Contexts/AuthProvider';
 import Services from './Pages/Services/Services';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import ManageServices from './Pages/ManageServices/ManageServices';
+import SingleService from './Pages/SingleService/SingleService';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -24,10 +27,17 @@ function App() {
         <Route exact path='/login'>
           <Signin></Signin>
         </Route>
-        <PrivateRoute exact path='/services'>
+        <Route exact path='/services'>
           <Services></Services>
+        </Route>
+        <Route exact path='/services/:service'>
+          <SingleService></SingleService>
+        </Route>
+        <PrivateRoute exact path='/manage'>
+          <ManageServices></ManageServices>
         </PrivateRoute>
       </Switch>
+      <Footer></Footer>
       </BrowserRouter>
       </AuthProvider>
     </div>

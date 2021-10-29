@@ -1,0 +1,91 @@
+.top-footer{
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr;
+    background-color: #e9ecef;
+    padding: 80px 100px;
+    color: #343a40;
+}
+
+.bottom-footer{
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+
+.footer ul li{
+    list-style: none;
+    font-weight: 600;
+    text-align: left;
+    margin-left: -20px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.footer ul li:hover{
+    color: black;
+}
+
+.top-footer p, .top-footer span{
+    text-align: left;
+    font-family: "Poppins",'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.footer{
+    text-align: left;
+    margin-top: 90px;
+}
+
+.footer input[type=email]{
+    border-radius: 5px 0 0 5px;
+    border: 2px solid #343a40;
+    border-right: 0px;
+    padding: 8px 10px;
+    font-weight: 600;
+    color: #343a40;
+    width: 70%;
+}
+
+.footer input[type=submit]{
+    border-radius:  0 8px 8px 0;
+    border: 2px solid #343a40;
+    border-left: 0px;
+    letter-spacing: 5px;
+    background-color: white;
+    text-transform: uppercase;
+    color: #343a40;
+    font-weight: 700;
+    padding: 8px 10px;
+}
+
+.footer span{
+    color: rgb(97, 25, 25);
+}
+
+.footer a{
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: 7px;
+    background-color: #343a40;
+    color: white;
+    margin-right: 10px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.copyright{
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.copyright span{
+    color: rgb(223, 168, 168);
+    font-weight: 600;
+}

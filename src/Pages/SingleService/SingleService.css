@@ -1,0 +1,43 @@
+.service-image{
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+.service-details{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 50px 80px;
+    padding: 50px;
+}
+
+.service-details h5{
+    font-size: 40px;
+    text-transform: capitalize;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.details-half p,.details-half hr{
+    font-weight: 600;
+    font-family: "Poppins";
+    margin: 30px;
+    font-size: 2rem;
+    text-align: left;
+    padding-left: 40px;
+    color: gray;
+}
+
+.service-button2{
+    text-align: left;
+    margin-left: 70px;
+}
+
+.service-box{
+    border: 1px solid gray;
+    border-radius: 7px;
+    background-color: honeydew;
+    padding: 2px 2px 15px;
+    box-shadow: 0 0 10px gray;
+}
