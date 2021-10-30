@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "tour-de-world-47229"
+    "default": "tour-de-world-private-limited"
+  },
+  "targets": {
+    "tour-de-world-47229": {
+      "hosting": {
+        "tour-de-world-private-limited": [
+          "tour-de-world-private-limited"
+        ]
+      }
+    }
   }
 }

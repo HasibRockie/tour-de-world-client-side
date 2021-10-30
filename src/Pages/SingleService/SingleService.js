@@ -6,7 +6,7 @@ import "./SingleService.css";
 const SingleService = () => {
   const { service } = useParams();
   const [singleService, setSingleService] = useState({});
-  const url = `http://localhost:5000/services/${service}`;
+  const url = `https://tour-de-world-private-limited.herokuapp.com/services/${service}`;
 
   useEffect(() => {
     fetch(url)

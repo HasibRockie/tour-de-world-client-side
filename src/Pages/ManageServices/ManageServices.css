@@ -30,3 +30,16 @@
 .manage{
     margin-top: 100px;
 }
+
+.table-body button{
+    margin: 0;
+    padding: 3px 1px;
+}
+
+td span{
+    margin-left: 10px;
+}
+
+.user-display-name{
+    text-transform: uppercase;
+}

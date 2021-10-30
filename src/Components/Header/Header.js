@@ -5,8 +5,9 @@ import logo from "./logo.png";
 import useAuth from './../../Contexts/useAuth';
 
 const Header = () => {
-  const {user, loggedIn, handleSignout, cart} = useAuth()
-  return (
+  const {user, loggedIn, handleSignout, cart, userProfile, profileId} = useAuth()
+  const profileUrl = `/profile/${profileId}`
+  return (  
     <div className="header">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
@@ -34,7 +35,7 @@ const Header = () => {
               <Link to="/orders">
                 <span className="nav-item nav-link">Orders</span>
               </Link>
-              <Link to="/profile">
+              <Link to='/profile'>
                 <span className="nav-item nav-link">Profile</span>
               </Link>
               <Link to="/manage">
@@ -46,7 +47,7 @@ const Header = () => {
                 !loggedIn ? <Link to="/login">
                 <span className="nav-item nav-link">Login</span>
               </Link> : <div>
-                <span className="cart"><i className="fas fa-cart-arrow-down "></i><p>{cart.length}</p> </span>
+                <span className="cart"><i className="fas fa-cart-arrow-down "></i><p>{cart?.length}</p> </span>
                 <span className="display-name">{user.displayName}</span> 
                 <button onClick={handleSignout} className="btn btn-danger"><i className="fas fa-sign-out-alt"></i> Logout</button>
               </div> 

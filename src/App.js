@@ -10,6 +10,8 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ManageServices from './Pages/ManageServices/ManageServices';
 import SingleService from './Pages/SingleService/SingleService';
 import Footer from './Components/Footer/Footer';
+import Profile from './Pages/Profile/Profile';
+import PublicRoute from './PublicRoute/PublicRoute';
 
 function App() {
   return (
@@ -24,12 +26,15 @@ function App() {
         <Route exact path='/home'>
           <Home></Home>
         </Route>
-        <Route exact path='/login'>
+        <PublicRoute exact path='/login'>
           <Signin></Signin>
-        </Route>
+        </PublicRoute>
         <Route exact path='/services'>
           <Services></Services>
         </Route>
+        <PrivateRoute exact path='/profile'>
+          <Profile></Profile>
+        </PrivateRoute>
         <Route exact path='/services/:service'>
           <SingleService></SingleService>
         </Route>

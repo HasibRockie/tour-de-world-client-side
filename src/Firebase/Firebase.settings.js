@@ -17,58 +17,83 @@ const FirebaseSettings = () => {
   const [cart, setCart] = useState([]);
   const [orders, setOrders] = useState([]);
   const [userProfile, setUserProfile] = useState({});
+  const [profileId, setProfileId] = useState("");
   const [allUsers, setAllUsers] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState('')
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
 
   const [services, setServices] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/users")
-      .then((res) => res.json())
-      .then((data) => setAllUsers(data));
-  }, []);
 
   useEffect(() => {
     setLoading(true);
+
+    fetch("https://tour-de-world-private-limited.herokuapp.com/services")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+
+    fetch("https://tour-de-world-private-limited.herokuapp.com/users")
+    .then(res => res.json())
+    .then(data => setAllUsers(data))
+
+    
+
     onAuthStateChanged(auth, (user) => {
+      const present = allUsers.filter(singleUser =>  singleUser.user.email === userEmail)
+      setUserProfile(present[0])
+
+      setCart(userProfile?.cart || [])
+        setOrders(userProfile?.orders || [])
+
       if (user) {
         setUser(user);
+        setUserEmail(user.email); 
         setLoggedIn(true);
-        setUserProfile({ user, cart, orders }); //updated
         const uid = user.uid;
+        
+        // console.log("user found");
       } else {
         setUser({});
-        setUserProfile({});
         setLoggedIn(false);
-        setCart([]);
-        setOrders([]);
+        console.log("user not ofound");
       }
       setLoading(false);
     });
-  }, []);
+  }, [allUsers]);
 
   // check user function
-  // const checkUser = (user) => {
-    
-  //   const member = allUsers.filter(
-  //     (singleUser) => singleUser.user === user
-  //   );
-  //   console.log(member);
-  //   if (member) {
-  //     console.log("old user!");
-  //     console.log(allUsers);
-  //   } else {
-  //     console.log("new user");
-  //   }
-  // };
+  const checkUser = async (userEmail) => {
+    const member = allUsers.filter(
+      (singleUser) => singleUser.user?.email === userEmail
+    );
+
+    console.log(member);
+    if (member.length !== 0) {
+      setProfileId(member[0]?._id);
+      console.log(member[0]?._id);
+      setCart(member[0]?.cart);
+      
+    } else {
+      console.log(user);
+      userProfile.cart = cart;
+      userProfile.orders = orders;
+      const url = `https://tour-de-world-private-limited.herokuapp.com/users`;
+      const object = await userProfile;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(object),
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   // google sign in
   const handleGoogleSignin = () => {
@@ -76,12 +101,12 @@ const FirebaseSettings = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
+        setUserEmail(result.user?.email); 
+        console.log(userEmail);
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
-        const user = result.user;
-        // checkUser(user);
-        setUserProfile({ user, cart, orders });
-        history.push("/");
+        checkUser(result.user?.email);
+        const userId = result.user;
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -99,9 +124,9 @@ const FirebaseSettings = () => {
       .then(() => {
         setUser({});
         setLoggedIn(false);
-        setUserProfile({});
-        setCart([]);
-        setOrders([]);
+        setUserProfile({})
+        setCart([])
+        setOrders([])
       })
       .catch((error) => {
         console.log(error.errorMessage);
@@ -126,6 +151,8 @@ const FirebaseSettings = () => {
     setOrders,
     userProfile,
     setUserProfile,
+    profileId,
+    setProfileId,
   };
 };
 

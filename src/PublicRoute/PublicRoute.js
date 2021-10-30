@@ -1,7 +1,7 @@
 import useAuth from "./../Contexts/useAuth";
 import { Route, Redirect } from "react-router-dom";
 
-function PrivateRoute({ children, ...rest }) {
+function PublicRoute({ children, ...rest }) {
   const { loggedIn, loading } = useAuth();
   if (loading) {
     return (
@@ -14,12 +14,12 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        loggedIn ? (
+        !loggedIn ? (
           children
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/home",
               state: { from: location },
             }}
           />
@@ -29,4 +29,4 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
-export default PrivateRoute;
+export default PublicRoute;

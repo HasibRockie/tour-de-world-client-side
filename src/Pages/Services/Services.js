@@ -21,26 +21,25 @@ const Services = () => {
 
 const Service = (props) => {
   const { service } = props;
-  const { services, cart, setCart, setUserProfile, userProfile, user, orders } =
-    useAuth();
+  const { services, cart, setCart, setUserProfile, userProfile, user, orders } = useAuth();
 
-  useEffect(() => {
-    setUserProfile({ user, cart, orders });
-  }, []);
-
-  const handleAddToCart = async (service) => {
-    const url = `http://localhost:5000/users/${userProfile._id}`;
-    setCart([...cart, service]);
-    console.log(cart, userProfile);
+  const handleAddToCart = (service) => {
+    cart.push(service)
+    const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
     fetch(url, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(userProfile),
+      body: JSON.stringify({ user: user, cart: cart, orders: orders }),
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        alert("successfully added to the cart!")
+        // setCart([...cart, service]);
+      })
       .catch((err) => console.log(err));
+
+     
   };
 
   const url = `/services/${service._id}`;

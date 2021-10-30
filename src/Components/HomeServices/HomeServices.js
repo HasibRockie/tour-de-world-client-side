@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 import "./HomeServices.css";
+import useAuth from './../../Contexts/useAuth';
 
 const responsive = {
   desktop: {
@@ -26,10 +27,12 @@ const responsive = {
 
 
 
+
+
 const HomeServices = ({deviceType}) => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://tour-de-world-private-limited.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -59,7 +62,7 @@ const HomeServices = ({deviceType}) => {
         focusOnSelect={true}
       >
         {services.map((service) => (
-          <Service service={service}></Service>
+          <Service key={service._id} service={service}></Service>
         ))}
       </Carousel>
     </div>
@@ -67,6 +70,26 @@ const HomeServices = ({deviceType}) => {
 };
 
 const Service = (props) => {
+
+  const {cart, user, orders, userProfile} = useAuth()
+  // console.log(cart);
+  const handleAddToCart = (service) => {
+    cart.push(service)
+    const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: user, cart: cart, orders: orders }),
+    })
+      .then((res) => {
+        alert("successfully added to the cart!")
+        // setCart([...cart, service]);
+      })
+      .catch((err) => console.log(err));
+     
+  };
   const { service } = props;
   const url = `/services/${service._id}`
   return (
@@ -76,7 +99,7 @@ const Service = (props) => {
       <p>{service.duration}</p>
       <p>$ {service.price}</p>
       <div className="service-buttons">
-          <button>Add to Cart</button>
+          <button onClick={() => handleAddToCart(service)}>Add to Cart</button>
           <Link to={url}><button>See Details</button></Link>
         </div>
     </div>
