@@ -1,11 +1,8 @@
-import React from "react";
+import React,{ useState } from "react";
 import { useParams } from "react-router";
 import useAuth from "./../../Contexts/useAuth";
-import { useEffect } from "react";
-import SingleService from "./../SingleService/SingleService";
 
 import "./Profile.css";
-import { useState } from "react/cjs/react.development";
 
 const Profile = () => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -16,7 +13,7 @@ const Profile = () => {
   // console.log(user);
   // const {cart} = userProfile
 
- const totalPriceFunc = () => {
+  const totalPriceFunc = () => {
    let total = 0;
    cart.forEach(ct => {
       total += parseInt(ct.price)

@@ -4,9 +4,10 @@ import { axios } from "axios";
 import useAuth from "./../../Contexts/useAuth";
 import { useState } from "react/cjs/react.development";
 import ShowUser from './ShowUser';
+import ShowService from './ShowService';
 
 const ManageServices = () => {
-  const { allUsers } = useAuth();
+  const { allUsers, services } = useAuth();
   const titleRef = useRef();
   const imgLinkRef = useRef();
   const durationRef = useRef();
@@ -99,6 +100,30 @@ const ManageServices = () => {
           <tbody className="table-body">
             {allUsers.map((user) => (
               <ShowUser key={user._id} user={user}></ShowUser>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+      <div className="all-users ">
+        <h2>See All Services</h2>
+        <br />
+
+        <table class="table all-services table-striped">
+          <thead>
+            <tr>
+             
+              <th scope="col">Name</th>
+              
+              <th scope="col">Duration</th>
+              <th scope="col">Price</th>
+              <th scope="col">Remove Service</th>
+            </tr>
+          </thead>
+          <tbody className="table-body">
+            {services.map((service) => (  
+              <ShowService key={service._id} service={service}></ShowService>
             ))}
           </tbody>
         </table>

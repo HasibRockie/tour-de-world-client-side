@@ -42,4 +42,13 @@ td span{
 
 .user-display-name{
     text-transform: uppercase;
+
+}
+
+.all-services{
+    padding-left: 80px;
+}
+
+.all-users{
+    margin-top: 100px;  
 }
