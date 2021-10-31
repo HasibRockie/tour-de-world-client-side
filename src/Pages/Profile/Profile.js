@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import useAuth from "./../../Contexts/useAuth";
 
 import "./Profile.css";
-import { useEffect } from "react/cjs/react.development";
 
 const Profile = () => {
   const [totalPrice, setTotalPrice] = useState(0);
