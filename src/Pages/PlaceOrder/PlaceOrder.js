@@ -39,7 +39,7 @@ const PlaceOrder = () => {
   const handlePlaceOrder = () => {
       setOrders(cart)
       setCart([])
-    const url = `http://localhost:5000/users/${userProfile._id}`;
+    const url = `http://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
     const object = { ...userProfile, cart:[], orders: cart}
     console.log(url);
     fetch(url, {
@@ -72,7 +72,7 @@ const PlaceOrder = () => {
     
     setUserProfile({ ...userProfile, details: detailsInfo });
     // put method
-    const url = `http://localhost:5000/users/${userProfile._id}`;
+    const url = `http://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
     console.log(url);
     fetch(url, {
       method: "PUT",
