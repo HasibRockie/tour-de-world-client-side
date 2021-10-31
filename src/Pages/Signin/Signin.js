@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Signin.css";
 import logo from '../../Components/Header/logo.png'
 import useAuth from './../../Contexts/useAuth';
 
 const Signin = () => {
-    const {handleGoogleSignin, loggedIn} = useAuth()
+    const {handleGoogleSignin} = useAuth()
   return (
     <div className="signin">
         <img className="logo2" src={logo} alt="" />

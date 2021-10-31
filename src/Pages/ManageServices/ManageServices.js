@@ -1,13 +1,11 @@
 import React, { useRef } from "react";
 import "./ManageServices.css";
-import { axios } from "axios";
 import useAuth from "./../../Contexts/useAuth";
-import { useState } from "react/cjs/react.development";
 import ShowUser from './ShowUser';
 import ShowService from './ShowService';
 
 const ManageServices = () => {
-  const { allUsers, services } = useAuth();
+  const { allUsers, services, setServices } = useAuth();
   const titleRef = useRef();
   const imgLinkRef = useRef();
   const durationRef = useRef();
@@ -32,6 +30,7 @@ const ManageServices = () => {
       .then((res) => {
         alert("successfully added!");
         e.target.reset();
+        setServices([...services,data])
       })
       .catch(function (error) {
         console.log(error);

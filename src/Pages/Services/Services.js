@@ -1,11 +1,10 @@
-import React from "react";
+import React  from "react";
 import "./Services.css";
 import useAuth from "./../../Contexts/useAuth";
 import { Link } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 
 const Services = () => {
-  const { services, cart, setCart, setUserProfile, user, orders } = useAuth();
+  const { services } = useAuth();
 
   return (
     <div>
@@ -21,26 +20,24 @@ const Services = () => {
 
 const Service = (props) => {
   const { service } = props;
-  const { services, cart, setCart, setUserProfile, userProfile, user, orders } = useAuth();
+  const {  handleAddToCart } = useAuth();
 
-  const handleAddToCart = (service) => {
-    cart.push(service)
-    const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ user: user, cart: cart, orders: orders }),
-    })
-      .then((res) => {
-        alert("successfully added to the cart!")
-        // setCart([...cart, service]);
-      })
-      .catch((err) => console.log(err));
-
-     
-  };
+  // const handleAddToCart = (service) => {
+  //   cart.push(service)
+  //   const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
+  //   fetch(url, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ user: user, cart: cart, orders: orders }),
+  //   })
+  //     .then((res) => {
+  //       alert("successfully added to the cart!")
+  //       // setCart([...cart, service]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const url = `/services/${service._id}`;
   return (

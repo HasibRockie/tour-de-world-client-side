@@ -6,7 +6,6 @@ const PlaceOrder = () => {
   const {
     user,
     cart,
-    orders,
     userProfile,
     setUserProfile,
     allUsers,
@@ -98,7 +97,7 @@ const PlaceOrder = () => {
     setCart(present[0]?.cart || []);
     setOrders(present[0]?.orders || []);
     
-  }, []);
+  }, [allUsers, details, setCart, setOrders, setUserProfile, user?.email]);
 
   return (
     <div className="place-order">

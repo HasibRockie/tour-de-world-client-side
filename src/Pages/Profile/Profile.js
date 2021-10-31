@@ -12,13 +12,12 @@ const Profile = () => {
     setUserProfile,
     userProfile,
     user,
-    profileId,
     allUsers,
     setCart,
     setOrders,
   } = useAuth();
 
-  const { cart, orders } = useAuth();
+  const { cart } = useAuth();
   
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const Profile = () => {
 
     setCart(userProfile?.cart || []);
     setOrders(userProfile?.orders || []);
-  }, []);
+  }, [allUsers, setCart, setOrders, setUserProfile, user?.email, userProfile?.cart,  userProfile?.orders]);
 
   const displayCart = userProfile?.cart || [];
 
@@ -85,7 +84,7 @@ const Profile = () => {
 };
 
 const CartShow = (props) => {
-  const { ct, setTotalPrice, totalPrice } = props;
+  const { ct } = props;
 
   return (
     <div className="cart-row">

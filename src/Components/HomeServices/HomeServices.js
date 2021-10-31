@@ -71,25 +71,25 @@ const HomeServices = ({deviceType}) => {
 
 const Service = (props) => {
 
-  const {cart, user, orders, userProfile} = useAuth()
+  const { handleAddToCart} = useAuth()
   // console.log(cart);
-  const handleAddToCart = (service) => {
-    cart.push(service)
-    const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ user: user, cart: cart, orders: orders }),
-    })
-      .then((res) => {
-        alert("successfully added to the cart!")
-        // setCart([...cart, service]);
-      })
-      .catch((err) => console.log(err));
+  // const handleAddToCart = (service) => {
+  //   cart.push(service)
+  //   const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
+  //   fetch(url, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ user: user, cart: cart, orders: orders }),
+  //   })
+  //     .then((res) => {
+  //       alert("successfully added to the cart!")
+  //       // setCart([...cart, service]);
+  //     })
+  //     .catch((err) => console.log(err));
      
-  };
+  // };
   const { service } = props;
   const url = `/services/${service._id}`
   return (

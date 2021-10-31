@@ -45,13 +45,6 @@ const FirebaseSettings = () => {
       .then((res) => res.json())
       .then((data) => setAllUsers(data));
 
-    // const present = allUsers.filter(
-    //   (singleUser) => singleUser.user.email === user?.email
-    // );
-    // setUserProfile({ ...present[0], details });
-
-    // setCart(present[0]?.cart || []);
-    // setOrders(present[0]?.orders || []);
 
     onAuthStateChanged(auth, (user) => {
       const present = allUsers.filter(
@@ -66,7 +59,6 @@ const FirebaseSettings = () => {
         setUser(user);
         setUserEmail(user.email);
         setLoggedIn(true);
-        const uid = user.uid;
 
         // console.log("user found");
       } else {
@@ -76,8 +68,8 @@ const FirebaseSettings = () => {
       }
       setLoading(false);  
     });
-  }, [cart]);
-
+  }, [ allUsers,auth, userEmail, userProfile?.cart, userProfile?.orders]);  
+ 
   // check user function
   const checkUser = async (userEmail) => {
     const member = allUsers.filter(
@@ -109,6 +101,27 @@ const FirebaseSettings = () => {
     }
   };
 
+
+  // add to cart function 
+  const handleAddToCart = (service) => {
+    cart.push(service)
+    const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: user, cart: cart, orders: orders }),
+    })
+      .then((res) => {
+        alert("successfully added to the cart!")
+        // setCart([...cart, service]);
+      })
+      .catch((err) => console.log(err));
+  };
+
+
+
   // google sign in
   const handleGoogleSignin = () => {
     setLoading(true);
@@ -117,16 +130,10 @@ const FirebaseSettings = () => {
         setUser(result.user);
         setUserEmail(result.user?.email);
         console.log(userEmail);
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
         checkUser(result.user?.email);
-        const userId = result.user;
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
         console.log(errorMessage);
       })
       .finally(setLoading(false));
@@ -169,6 +176,7 @@ const FirebaseSettings = () => {
     setProfileId,
     details,
     setDetails,
+    handleAddToCart
   };
 };
 
