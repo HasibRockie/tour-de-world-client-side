@@ -76,7 +76,7 @@ const FirebaseSettings = () => {
       }
       setLoading(false);  
     });
-  }, [cart]);  
+  }, [cart]);
 
   // check user function
   const checkUser = async (userEmail) => {
