@@ -40,11 +40,14 @@ const ManageServices = () => {
 
   return (
     <div className="manage">
+
+      <h1 className="admin">Admin Control </h1>
+      <hr />
       <div className="add-list">
         <form onSubmit={handleManageService}>
           <fieldset>
             <legend>
-              <h1>Add New Services </h1>
+              <h4>Add New Services </h4>
             </legend>
             <div className="manage-half">
               <input
@@ -85,7 +88,7 @@ const ManageServices = () => {
         <h2>See All Users</h2>
         <br />
 
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
             <tr>
              
@@ -110,7 +113,7 @@ const ManageServices = () => {
         <h2>See All Services</h2>
         <br />
 
-        <table class="table all-services table-striped">
+        <table className="table all-services table-striped">
           <thead>
             <tr>
              

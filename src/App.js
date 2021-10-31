@@ -12,6 +12,8 @@ import SingleService from './Pages/SingleService/SingleService';
 import Footer from './Components/Footer/Footer';
 import Profile from './Pages/Profile/Profile';
 import PublicRoute from './PublicRoute/PublicRoute';
+import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -41,6 +43,12 @@ function App() {
         <PrivateRoute exact path='/manage'>
           <ManageServices></ManageServices>
         </PrivateRoute>
+        <PrivateRoute exact path='/placeorder'>
+          <PlaceOrder></PlaceOrder>
+        </PrivateRoute>
+        <Route exact path='*'>
+          <NotFound></NotFound>
+        </Route>
       </Switch>
       <Footer></Footer>
       </BrowserRouter>

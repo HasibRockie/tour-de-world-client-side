@@ -52,3 +52,13 @@ td span{
 .all-users{
     margin-top: 100px;  
 }
+
+.admin{
+    background-color: aliceblue;
+    color: gray;
+    padding: 15px 40px;
+    /* border-radius: 5px; */
+    /* display: inline; */
+    margin: 30px auto 80px;
+    border: 0.3px solid rgb(177, 177, 177);
+}

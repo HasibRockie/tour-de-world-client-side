@@ -1,0 +1,97 @@
+.place-order{
+    color: brown;
+}
+
+.place-order{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.half2{
+    flex-direction: column;
+    text-align: left;
+}
+
+.place-order legend{
+    text-align: center;
+    display: inline;
+    margin-top: 80px;
+    /* margin-left: 120px; */
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 2.7rem;
+    letter-spacing: 5px;
+    font-family: "Poppins",serif;
+}
+
+
+.update-btn{
+    text-align: center;
+    color: aliceblue;
+    width: 550px;
+    height: 40px;
+    border: 1px solid gray;
+    background-color: darkgreen;
+    border-radius: 7px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+
+    margin: 20px 60px;
+}
+
+.place-order input{
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-family: "Poppins",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.placeorder-details{
+    display: flex;
+    flex-direction: column;
+    margin: 130px 80px 40px;
+    font-size: 1.3rem;
+}
+
+.placeorder-details div{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    color: rgb(100, 100, 100);
+    font-size: 1.5rem;
+    border-bottom: 2px solid rgba(125, 202, 156, 0.548);
+}
+
+.box-placeorder{
+    border: 3px solid gray;
+    margin: 90px 90px;
+    padding-bottom: 30px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding-top:10px ;
+}
+
+.user-details{
+    color: rgb(48, 48, 48);
+    text-transform: capitalize;
+    font-weight: 600;
+    font-family: "Poppins",-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+.placeorder-details button{
+    margin: 20px 9px;
+    background-color: rgb(240, 255, 240);
+    border-radius: 6px;
+    border: 2px solid;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+

@@ -1,0 +1,6 @@
+.NotFound{
+    background-image: url("./notFound.png");
+    background-size: cover;
+    background-position: top;
+    min-height: 900px;
+}

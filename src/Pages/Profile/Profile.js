@@ -1,44 +1,65 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import useAuth from "./../../Contexts/useAuth";
 
 import "./Profile.css";
+import { useEffect } from "react/cjs/react.development";
 
 const Profile = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const { id } = useParams();
-  const { setUserProfile, userProfile, user, profileId, allUsers } = useAuth();
+  const {
+    setUserProfile,
+    userProfile,
+    user,
+    profileId,
+    allUsers,
+    setCart,
+    setOrders,
+  } = useAuth();
 
   const { cart, orders } = useAuth();
-  // console.log(user);
-  // const {cart} = userProfile
+  
+
+  useEffect(() => {
+    const present = allUsers.filter(
+      (singleUser) => singleUser.user.email === user?.email
+    );
+    setUserProfile(present[0]);
+
+    setCart(userProfile?.cart || []);
+    setOrders(userProfile?.orders || []);
+  }, []);
+
+  const displayCart = userProfile?.cart || [];
 
   const totalPriceFunc = () => {
-   let total = 0;
-   cart.forEach(ct => {
-      total += parseInt(ct.price)
-   })
-   return total 
- }
+    let total = 0;
+    cart.forEach((ct) => {
+      total += parseInt(ct.price);
+    });
+    return total;
+  };
 
   return (
     <div className="profile">
       <div className="image">
         <img className="user-profile-pic" src={user.photoURL} alt="" />
-        <p>
+        <h6>
           <p className="name-title"> Name:</p> <hr />{" "}
           <span>{user.displayName}</span>
-        </p>
-        <p>
+        </h6>
+        <h6>
           <p className="name-title"> Email:</p> <hr />
           <span>{user.email}</span>
-        </p>
+        </h6>
       </div>
       <div className="cart-all">
         <h6 className="cart-title">Your Cart</h6>
         <hr />
         <div className="cart-items">
-          {cart.map((ct) => (
+          {displayCart.map((ct) => (
             <CartShow
               setTotalPrice={setTotalPrice}
               totalPrice={totalPrice}
@@ -52,11 +73,12 @@ const Profile = () => {
         <h6 className="cart-title">Checkout</h6>
         <hr />
         <div className="cart-items">
-          <h4 className='price-sum'>
-            
+          <h4 className="price-sum">
             Total Price: <span className="totalPrice">${totalPriceFunc()}</span>
           </h4>
-          <button className="confirm">Confirm Now</button>
+          <Link to="/placeorder">
+            <button className="confirm">Proceed to Checkout</button>
+          </Link>
         </div>
       </div>
     </div>
@@ -65,7 +87,7 @@ const Profile = () => {
 
 const CartShow = (props) => {
   const { ct, setTotalPrice, totalPrice } = props;
- 
+
   return (
     <div className="cart-row">
       <img src={ct.image} alt="" />
@@ -74,7 +96,6 @@ const CartShow = (props) => {
       <button>
         <i className="far fa-trash-alt"></i>
       </button>
-      
     </div>
   );
 };
