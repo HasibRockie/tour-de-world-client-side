@@ -97,7 +97,7 @@ const PlaceOrder = () => {
     setCart(present[0]?.cart || []);
     setOrders(present[0]?.orders || []);
     
-  }, [allUsers, details, setCart, setOrders, setUserProfile, user?.email]);
+  }, [allUsers, setCart, setOrders]);
 
   return (
     <div className="place-order">

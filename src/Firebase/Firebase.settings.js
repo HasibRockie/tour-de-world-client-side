@@ -68,7 +68,7 @@ const FirebaseSettings = () => {
       }
       setLoading(false);  
     });
-  }, [ allUsers,auth, userEmail, userProfile?.cart, userProfile?.orders]);  
+  }, [ auth, userEmail, userProfile?.cart, userProfile?.orders]);  
  
   // check user function
   const checkUser = async (userEmail) => {

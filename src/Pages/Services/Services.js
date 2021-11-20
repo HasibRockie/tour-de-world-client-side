@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import "./Services.css";
 import useAuth from "./../../Contexts/useAuth";
 import { Link } from "react-router-dom";
@@ -20,24 +20,7 @@ const Services = () => {
 
 const Service = (props) => {
   const { service } = props;
-  const {  handleAddToCart } = useAuth();
-
-  // const handleAddToCart = (service) => {
-  //   cart.push(service)
-  //   const url = `https://tour-de-world-private-limited.herokuapp.com/users/${userProfile._id}`;
-  //   fetch(url, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({ user: user, cart: cart, orders: orders }),
-  //   })
-  //     .then((res) => {
-  //       alert("successfully added to the cart!")
-  //       // setCart([...cart, service]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const { handleAddToCart } = useAuth();
 
   const url = `/services/${service._id}`;
   return (

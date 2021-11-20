@@ -28,7 +28,7 @@ const Profile = () => {
 
     setCart(userProfile?.cart || []);
     setOrders(userProfile?.orders || []);
-  }, [allUsers, setCart, setOrders, setUserProfile, user?.email, userProfile?.cart,  userProfile?.orders]);
+  }, [user?.email, userProfile?.cart,  userProfile?.orders]);
 
   const displayCart = userProfile?.cart || [];
 
